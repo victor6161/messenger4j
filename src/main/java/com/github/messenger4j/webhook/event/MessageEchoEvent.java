@@ -15,7 +15,7 @@ import lombok.ToString;
 public final class MessageEchoEvent extends BaseEvent {
 
   private final String messageId;
-  private final String appId;
+  private final Optional<String> appId;
   private final Optional<String> metadata;
 
   public MessageEchoEvent(
@@ -23,7 +23,7 @@ public final class MessageEchoEvent extends BaseEvent {
       @NonNull String recipientId,
       @NonNull Instant timestamp,
       @NonNull String messageId,
-      @NonNull String appId,
+      @NonNull Optional<String> appId,
       @NonNull Optional<String> metadata) {
     super(senderId, recipientId, timestamp);
     this.messageId = messageId;
@@ -35,7 +35,7 @@ public final class MessageEchoEvent extends BaseEvent {
     return messageId;
   }
 
-  public String appId() {
+  public Optional<String> appId() {
     return appId;
   }
 
